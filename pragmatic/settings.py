@@ -15,6 +15,9 @@ from pathlib import Path
 import environ
 import os
 
+from django.conf.global_settings import LOGIN_REDIRECT_URL
+from django.urls import reverse_lazy
+
 env = environ.Env(
     # set casting, default value
     DEBUG=(bool, False)
@@ -145,3 +148,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
+
+# 로그인, 로그아웃 후
+# http://127.0.0.1:8000/accounts/profile/
+# 경로로 이동 방지 설정
+LOGIN_REDIRECT_URL = reverse_lazy('accountapp:hello_world')
+LOGOUT_REDIRECT_URL = reverse_lazy('accountapp:login')
