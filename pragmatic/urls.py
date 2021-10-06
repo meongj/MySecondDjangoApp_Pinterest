@@ -20,5 +20,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # accountapp 하위에 있는 url들 참조
     # localhost:8000/account/ 주소로 갑니다
-    path('account/', include('accountapp.urls')),
+    path('accounts/', include('accountapp.urls')),
 ]
