@@ -1,6 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
 # Create your views here.
@@ -10,7 +10,7 @@ from django.views.generic import CreateView, DetailView, UpdateView
 from accountapp.models import HelloWorld
 
 # 컨트롤러 단,,
-from accountapp.templates.accountapp.forms import AccountUpdateForm
+from accountapp.forms import AccountUpdateForm
 
 
 def hello_world(request):
