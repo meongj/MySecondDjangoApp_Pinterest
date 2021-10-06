@@ -20,6 +20,15 @@
             </p>
         </a>
         {% endif %}
+
+        {% if target_user == user %}
+        <a href="{% url 'accountapp:delete' pk=user.pk %}">
+            <p>
+                Quit
+            </p>
+        </a>
+        {% endif %}
+
     </div>
 
 </div>
