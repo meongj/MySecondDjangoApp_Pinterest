@@ -21,4 +21,5 @@ urlpatterns = [
     # accountapp 하위에 있는 url들 참조
     # localhost:8000/account/ 주소로 갑니다
     path('accounts/', include('accountapp.urls')),
+    path('profiles/', include('profileapp.urls')),
 ]
