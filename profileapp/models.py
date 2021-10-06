@@ -3,6 +3,7 @@ from django.db import models
 
 # Create your models here.
 
+
 class Profile(models.Model):
     # 1:1 매칭
     # OneToOneField은 장고제공 1:1 매칭해주는 함수
