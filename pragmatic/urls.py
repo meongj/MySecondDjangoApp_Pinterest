@@ -13,13 +13,19 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
+from pragmatic import settings
+
 urlpatterns = [
+
     path('admin/', admin.site.urls),
     # accountapp 하위에 있는 url들 참조
     # localhost:8000/account/ 주소로 갑니다
     path('accounts/', include('accountapp.urls')),
     path('profiles/', include('profileapp.urls')),
-]
+
+    # 미디어 사진 출력하기 위한 MEDIA 환경 설정 추가
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
