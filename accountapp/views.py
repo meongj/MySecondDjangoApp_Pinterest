@@ -5,11 +5,12 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.urls import reverse, reverse_lazy
-from django.views.generic import CreateView, DetailView
+from django.views.generic import CreateView, DetailView, UpdateView
 
 from accountapp.models import HelloWorld
 
 # 컨트롤러 단,,
+from accountapp.templates.accountapp.forms import AccountUpdateForm
 
 
 def hello_world(request):
@@ -50,3 +51,10 @@ class AccountDetailView(DetailView):
     model = User
     context_object_name = 'target_user'
     template_name = 'accountapp/detail.html'
+
+
+class AccountUpdateView(UpdateView):
+    model = User
+    form_class = AccountUpdateForm # 수정한 form으로 변경
+    success_url = reverse_lazy('accountapp:hello_world')
+    template_name = 'accountapp/update.html'

@@ -5,7 +5,6 @@
         <div>
             <span>span1</span>
             <span>span2</span>
-            <span>span3</span>
 <!--            ?next={{ request.path }}
             이 인자는 로그인이든 하지않았든
             어떤 경우에서든지 해당 url로 돌아오게하는 것-->
@@ -17,7 +16,7 @@
              <a href="{% url 'accountapp:detail' pk=user.pk %}">
                 <span>MyPage</span>
             </a>
-             <span>span3</span>
+
              <a href="{% url 'accountapp:logout' %}?next={{ request.path }}">
                 <span>logout</span>
             </a>
