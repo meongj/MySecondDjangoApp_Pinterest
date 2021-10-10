@@ -3,7 +3,9 @@
         <h1 class="pragmatic_logo">Pragmatic</h1>
         </div>
         <div>
-            <span>span1</span>
+            <a href="{% url 'articleapp:list' %}">
+                 <span>Articles</span>
+            </a>
             <span>span2</span>
 <!--            ?next={{ request.path }}
             이 인자는 로그인이든 하지않았든
