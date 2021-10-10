@@ -5,7 +5,7 @@
 
 <style>
 
-.container div {
+.container div{
   width: 250px;
   background-color: antiquewhite;
   display: flex;
@@ -23,54 +23,27 @@
 
 </style>
 
+<!-- article 글 있으면 보여주기-->
+{% if article_list %}
 <div class="container">
-  <div >
-    <img src="https://picsum.photos/200/300">
-  </div>
-  <div >
-    <img src="https://picsum.photos/200/340">
-  </div>
-  <div >
-    <img src="https://picsum.photos/200/260">
-  </div>
-   <div >
-    <img src="https://picsum.photos/200/400">
-  </div>
-    <div >
-    <img src="https://picsum.photos/200/300">
-  </div>
-    <div >
-    <img src="https://picsum.photos/200/250">
-  </div>
-   <div >
-    <img src="https://picsum.photos/200/200">
-  </div>
-  <div >
-    <img src="https://picsum.photos/200/440">
-  </div>
-    <div >
-    <img src="https://picsum.photos/200/300">
-  </div>
-    <div >
-    <img src="https://picsum.photos/200/200">
-  </div>
-   <div >
-    <img src="https://picsum.photos/200/350">
-  </div>
-   <div >
-    <img src="https://picsum.photos/200/430">
-  </div>
-    <div >
-    <img src="https://picsum.photos/200/300">
-  </div>
-    <div >
-    <img src="https://picsum.photos/200/400">
-  </div>
-    <div >
-    <img src="https://picsum.photos/200/280">
-  </div>
+    {% for article in article_list %}
+    <a href="{% url 'articleapp:detail' pk=article.pk %}">
+        <div>
+            <!-- for문의 article이 card.html 의 article과 같다  -->
+            {% include 'snippets/card.html' with article=article %}
+        </div>
+    </a>
+    {% endfor %}
+</div>
+<script src="{% static 'js/magicgrid.js' %}"></script>
+{% else %}
+<div style="text-align: center">
+    <h1>No Articles YET!</h1>
+</div>
+{% endif %}
 
-  </div>
+<!--페이지네이션 버튼 추가-->
+{% include 'snippets/pagination.html' with page_obj=page_obj %}
 
 <div style="text-align:center">
     <a href="{% url 'articleapp:create' %}" class="btn btn-dark rounded-pill col-3 mt-3 mb-3">
@@ -79,6 +52,5 @@
 
 </div>
 
-<script src="{% static 'js/magicgrid.js' %}"></script>
 
 {% endblock %}
