@@ -5,42 +5,54 @@
 
 <style>
 <!--모바일 반응형 css 추가 -->
-.container {
-    padding: 0;
-    margin: 0, auto;
-}
 
 .container a {
-    width: 45%;
-    max-width: 250px;
+   padding: 0;
+   margin: 0, auto;
 }
 
 
-.container div {
+.container div{
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 1rem;
 }
 
-.container img {
-  width: 100%;
+.container img{
+  width: 7rem;
+  height: 7rem;
+  object-fit: cover;
   border-radius: 1rem;
 
 }
 
+@media screen and (max-width:500px) {
+    html {
+        font-size: 13px;
+    }
+}
 
+a {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    color: black;
+    text-decoration: none;
+}
 
 </style>
 
-<!-- article 글 있으면 보여주기-->
-{% if article_list %}
+<!-- 게시물 글 있으면 보여주기-->
+{% if project_list %}
 <div class="container">
-    {% for article in article_list %}
-    <a href="{% url 'articleapp:detail' pk=article.pk %}">
+    {% for project in project_list %}
+    <a href="{% url 'projectapp:detail' pk=project.pk %}">
         <div>
             <!-- for문의 article이 card.html 의 article과 같다  -->
-            {% include 'snippets/card.html' with article=article %}
+            {% include 'snippets/card_project.html' with project=project %}
         </div>
     </a>
     {% endfor %}
@@ -56,7 +68,7 @@
 {% include 'snippets/pagination.html' with page_obj=page_obj %}
 
 <div style="text-align:center">
-    <a href="{% url 'articleapp:create' %}" class="btn btn-dark rounded-pill col-3 mt-3 mb-3 px-3">
+    <a href="{% url 'projectapp:create' %}" class="btn btn-dark rounded-pill col-3 mt-3 mb-3 px-3">
       Create Article
     </a>
 

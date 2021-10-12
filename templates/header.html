@@ -2,29 +2,41 @@
         <div>
         <h1 class="pragmatic_logo">Pragmatic</h1>
         </div>
-        <div>
-            <a href="{% url 'articleapp:list' %}">
+        <div class="pragmatic_header_navbar">
+            <a href="{% url 'articleapp:list' %}" class="pragmatic_header_nav">
                  <span>Articles</span>
             </a>
-            <span>span2</span>
+             <a href="{% url 'projectapp:list' %}" class="pragmatic_header_nav">
+                 <span>Projects</span>
+             </a>
 <!--            ?next={{ request.path }}
             이 인자는 로그인이든 하지않았든
             어떤 경우에서든지 해당 url로 돌아오게하는 것-->
             {% if not user.is_authenticated %}
-            <a href="{% url 'accountapp:login' %}?next={{ request.path }}">
+            <a href="{% url 'accountapp:login' %}?next={{ request.path }}" class="pragmatic_header_nav">
                  <span>login</span>
             </a>
-            <a href="{% url 'accountapp:create' %}">
+            <a href="{% url 'accountapp:create' %}" class="pragmatic_header_nav">
                  <span>SignUp</span>
             </a>
             {% else %}
-             <a href="{% url 'accountapp:detail' pk=user.pk %}">
+             <a href="{% url 'accountapp:detail' pk=user.pk %}" class="pragmatic_header_nav">
                 <span>MyPage</span>
             </a>
 
-             <a href="{% url 'accountapp:logout' %}?next={{ request.path }}">
-                <span>logout</span>
+             <a href="{% url 'accountapp:logout' %}?next={{ request.path }}" class="pragmatic_header_nav">
+                <span>Logout</span>
             </a>
             {% endif %}
         </div>
     </div>
+
+    <style>
+.pragmatic_header_nav{
+    margin: 0 0.5rem
+}
+
+.pragmatic_header_navbar{
+    margin: 1rem 0;
+}
+    </style>

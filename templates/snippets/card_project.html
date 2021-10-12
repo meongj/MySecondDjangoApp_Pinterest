@@ -1,0 +1,8 @@
+<div style="display: block; text-align: center">
+    <img src="{{ project.image.url }}" alt="">
+
+    <h5 class="mt-2" style="font-family: 'NanumBarunpenB'">
+        <!-- truncatechars:  게시글 제목 글자수 제한 -->
+        {{ project.title | truncatechars:8 }}
+    </h5>
+</div>
