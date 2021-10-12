@@ -8,6 +8,7 @@ from django.shortcuts import render
 # Create your views here.
 from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView, ListView
+from django.views.generic.edit import FormMixin
 
 from articleapp.decorators import article_ownership_required
 from articleapp.forms import ArticleCreationForm
@@ -15,6 +16,9 @@ from articleapp.models import Article
 
 
 # login_required : 게시물 작성 시 항상 로그인되어 있어야함
+from commentapp.forms import CommentCreationForm
+
+
 @method_decorator(login_required(), 'get')
 @method_decorator(login_required(), 'post')
 class ArticleCreateView(CreateView):
@@ -34,8 +38,11 @@ class ArticleCreateView(CreateView):
         return reverse('articleapp:detail', kwargs={'pk': self.object.pk})
 
 
-class ArticleDetailView(DetailView):
+# FormMixin : 장고에서 제공해주는 mixin 다중 상속
+class ArticleDetailView(DetailView, FormMixin):
     model = Article
+    # 댓글 form - CommentCreationForm 추가
+    form_class = CommentCreationForm
     context_object_name = 'target_article'
     template_name = 'articleapp/detail.html'
 
