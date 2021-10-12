@@ -16,5 +16,14 @@
     margin: 2rem 0;
 }
 
+<!-
+모바일 반응형 css 설정 추가
+스크린 사이즈가 500px아래로 떨어지면 css 내용 적용
+->
+@media screen and (max-width:500px) {
+    html {
+        font-size: 13px;
+    }
+}
 
 
