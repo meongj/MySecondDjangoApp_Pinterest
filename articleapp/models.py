@@ -1,10 +1,14 @@
 from django.contrib.auth.models import User
 from django.db import models
 
+from projectapp.models import Project
+
 
 class Article(models.Model):
     # SET_NULL : User 탈퇴시에도 게시글은 삭제되지 않음 (알수없음)
     writer = models.ForeignKey(User, on_delete=models.SET_NULL, related_name='article', null=True)
+    # 누구의 게시글인지 Article과 Project와 연결
+    project = models.ForeignKey(Project, on_delete=models.SET_NULL, related_name='article', null=True)
     title = models.CharField(max_length=200, null=True)
     # 이미지는 article/ 경로 밑에 저장
     # 이미지는 항상 넣도록 하기
