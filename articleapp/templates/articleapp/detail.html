@@ -11,9 +11,10 @@
 
         <img style="width: 100%; border-radius: 1rem; margin: 2rem 0;" src="{{ target_article.image.url }}" alt="">
 
-        <p>
-            {{ target_article.content }}
-        </p>
+    <!--        safe : 태그로 뿌려지는 애들 처리 -->
+        <div style="text-align : left">
+            {{ target_article.content | safe }}
+        </div>
 
         {% if target_article.writer == user %}
         <a href="{% url 'articleapp:update' pk=target_article.pk %}"
