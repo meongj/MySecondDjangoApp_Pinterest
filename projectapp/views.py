@@ -36,6 +36,8 @@ class ProjectDetailView(DetailView, MultipleObjectMixin):
         if user.is_authenticated:
             # 구독정보 확인
             subscription = Subscription.objects.filter(user=user, project=project)
+        else:
+            subscription = None
 
         # Article 오브젝트가져와서 필터링
         object_list = Article.objects.filter(project=self.get_object())
