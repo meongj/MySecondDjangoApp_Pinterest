@@ -17,10 +17,11 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
+from articleapp.views import ArticleListView
 from pragmatic import settings
 
 urlpatterns = [
-
+    path('', ArticleListView.as_view(), name='home'),
     path('admin/', admin.site.urls),
     # accountapp 하위에 있는 url들 참조
     # localhost:8000/account/ 주소로 갑니다

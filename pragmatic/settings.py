@@ -159,7 +159,7 @@ STATICFILES_DIRS = [
 # 로그인, 로그아웃 후
 # http://127.0.0.1:8000/accounts/profile/
 # 경로로 이동 방지 설정
-LOGIN_REDIRECT_URL = reverse_lazy('accountapp:hello_world')
+LOGIN_REDIRECT_URL = reverse_lazy('home')
 LOGOUT_REDIRECT_URL = reverse_lazy('accountapp:login')
 
 
