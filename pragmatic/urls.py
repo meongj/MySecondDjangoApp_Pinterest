@@ -13,12 +13,13 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
 from articleapp.views import ArticleListView
-from pragmatic import settings
+
 
 urlpatterns = [
     path('', ArticleListView.as_view(), name='home'),
@@ -31,6 +32,7 @@ urlpatterns = [
     path('comments/', include('commentapp.urls')),
     path('projects/', include('projectapp.urls')),
     path('subscribe/', include('subscribeapp.urls')),
+    path('likes/', include('likeapp.urls')),
 
     # 미디어 사진 출력하기 위한 MEDIA 환경 설정 추가
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

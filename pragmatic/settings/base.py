@@ -9,16 +9,17 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
+import os, environ
 from pathlib import Path
 
-import environ
-import os
+from django.contrib.messages import constants as messages
 
 from django.conf.global_settings import LOGIN_REDIRECT_URL
 from django.urls import reverse_lazy
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+from pip._internal.cli.spinners import open_spinner
+
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 
@@ -38,6 +39,7 @@ INSTALLED_APPS = [
     'commentapp',
     'projectapp',
     'subscribeapp',
+    'likeapp',
 ]
 
 MIDDLEWARE = [
@@ -49,6 +51,12 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+}
+
 
 ROOT_URLCONF = 'pragmatic.urls'
 
